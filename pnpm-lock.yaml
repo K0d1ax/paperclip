@@ -174,6 +174,22 @@ importers:
         specifier: ^5.7.3
         version: 5.9.3
 
+  packages/adapters/copilot-local:
+    dependencies:
+      '@paperclipai/adapter-utils':
+        specifier: workspace:*
+        version: link:../../adapter-utils
+      picocolors:
+        specifier: ^1.1.1
+        version: 1.1.1
+    devDependencies:
+      '@types/node':
+        specifier: ^22.19.21
+        version: 22.19.21
+      typescript:
+        specifier: ^5.9.3
+        version: 5.9.3
+
   packages/adapters/cursor-cloud:
     dependencies:
       '@cursor/sdk':
@@ -731,6 +747,9 @@ importers:
       '@paperclipai/adapter-codex-local':
         specifier: workspace:*
         version: link:../packages/adapters/codex-local
+      '@paperclipai/adapter-copilot-local':
+        specifier: workspace:*
+        version: link:../packages/adapters/copilot-local
       '@paperclipai/adapter-cursor-cloud':
         specifier: workspace:*
         version: link:../packages/adapters/cursor-cloud
@@ -12668,7 +12687,7 @@ snapshots:
   '@types/body-parser@1.19.6':
     dependencies:
       '@types/connect': 3.4.38
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
 
   '@types/chai@5.2.3':
     dependencies:
@@ -12677,7 +12696,7 @@ snapshots:
 
   '@types/connect@3.4.38':
     dependencies:
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
 
   '@types/cookiejar@2.1.5': {}
 
@@ -12814,7 +12833,7 @@ snapshots:
 
   '@types/express-serve-static-core@5.1.1':
     dependencies:
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
       '@types/qs': 6.14.0
       '@types/range-parser': 1.2.7
       '@types/send': 1.2.1
@@ -12835,7 +12854,7 @@ snapshots:
 
   '@types/jsdom@28.0.0':
     dependencies:
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
       '@types/tough-cookie': 4.0.5
       parse5: 7.3.0
       undici-types: 7.24.4
@@ -12885,12 +12904,12 @@ snapshots:
 
   '@types/send@1.2.1':
     dependencies:
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
 
   '@types/serve-static@2.2.0':
     dependencies:
       '@types/http-errors': 2.0.5
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
 
   '@types/sharp@0.32.0(@types/node@22.19.21)':
     dependencies:
@@ -12902,7 +12921,7 @@ snapshots:
     dependencies:
       '@types/cookiejar': 2.1.5
       '@types/methods': 1.1.4
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
       form-data: 4.0.5
 
   '@types/supertest@6.0.3':
@@ -12920,7 +12939,7 @@ snapshots:
 
   '@types/ws@8.18.1':
     dependencies:
-      '@types/node': 22.19.21
+      '@types/node': 24.13.3
 
   '@ungap/structured-clone@1.3.0': {}
 
