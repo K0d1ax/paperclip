@@ -121,6 +121,17 @@ import {
   agentConfigurationDoc as piAgentConfigurationDoc,
   modelProfiles as piModelProfiles,
 } from "@paperclipai/adapter-pi-local";
+import {
+  execute as copilotExecute,
+  testEnvironment as copilotTestEnvironment,
+  sessionCodec as copilotSessionCodec,
+  getConfigSchema as getCopilotConfigSchema,
+} from "@paperclipai/adapter-copilot-local/server";
+import {
+  agentConfigurationDoc as copilotAgentConfigurationDoc,
+  models as copilotModels,
+  modelProfiles as copilotModelProfiles,
+} from "@paperclipai/adapter-copilot-local";
 import { BUILTIN_ADAPTER_TYPES } from "./builtin-adapter-types.js";
 import { buildExternalAdapters } from "./plugin-loader.js";
 import { getDisabledAdapterTypes } from "../services/adapter-plugin-store.js";
@@ -401,6 +412,23 @@ const openCodeLocalAdapter: ServerAdapterModule = {
   agentConfigurationDoc: openCodeAgentConfigurationDoc,
 };
 
+const copilotLocalAdapter: ServerAdapterModule = {
+  type: "copilot_local",
+  execute: copilotExecute,
+  testEnvironment: copilotTestEnvironment,
+  sessionCodec: copilotSessionCodec,
+  sessionManagement: getAdapterSessionManagement("copilot_local") ?? undefined,
+  models: copilotModels,
+  modelProfiles: copilotModelProfiles,
+  supportsLocalAgentJwt: false,
+  supportsInstructionsBundle: true,
+  instructionsPathKey: "instructionsFilePath",
+  requiresMaterializedRuntimeSkills: false,
+  getRuntimeCommandSpec: (config) => buildNpmRuntimeCommandSpec(config, "copilot", "@github/copilot-cli"),
+  agentConfigurationDoc: copilotAgentConfigurationDoc,
+  getConfigSchema: getCopilotConfigSchema,
+};
+
 const piLocalAdapter: ServerAdapterModule = {
   type: "pi_local",
   execute: piExecute,
@@ -441,6 +469,7 @@ function registerBuiltInAdapters() {
     piLocalAdapter,
     cursorCloudAdapter,
     cursorLocalAdapter,
+    copilotLocalAdapter,
     geminiLocalAdapter,
     grokLocalAdapter,
     hermesGatewayAdapter,
