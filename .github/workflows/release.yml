@@ -63,7 +63,7 @@ jobs:
         run: node ./scripts/release-package-map.mjs check
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile --prefer-offline
 
       - name: Restore tracked install-time changes
         run: git checkout -- pnpm-lock.yaml
@@ -133,7 +133,7 @@ jobs:
         run: node ./scripts/release-package-map.mjs check
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile --prefer-offline
 
       - name: Dry-run stable release
         env:
@@ -174,7 +174,7 @@ jobs:
           cache: pnpm
 
       - name: Install dependencies
-        run: pnpm install --no-frozen-lockfile
+        run: pnpm install --no-frozen-lockfile --prefer-offline
 
       - name: Restore tracked install-time changes
         run: git checkout -- pnpm-lock.yaml
